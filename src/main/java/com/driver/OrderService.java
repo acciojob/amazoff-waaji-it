@@ -1,66 +1,71 @@
 package com.driver;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.List;
+
 @Service
-public class OrderService
-{
+public class OrderService {
     //@Autowired
-    OrderRepository orderRepository=new OrderRepository();
-
-    public void addOrder(Order order) {
-        orderRepository.addOrder(order);
+    OrderRepository orderRepository = new OrderRepository();
+    public String addOrder(Order orderId){
+        String result = orderRepository.addOrder(orderId);
+        return result;
     }
 
-    public void addPartner(String partnerId) {
-        orderRepository.addPartner(partnerId);
+    public String addDeliveryPartner(String deliveryPartnerId){
+        String result = orderRepository.addDeliveryPartener(deliveryPartnerId);
+        return result;
     }
-
-
-    public void addOrderPartnerPair(String orderId, String partnerId) {
-        orderRepository.addOrderPartnerPair(orderId, partnerId);
+    public String addOrderPartnerPair(String orderId, String deliveryPartnerId){
+        String result = orderRepository.addOrderPartenerPair(orderId, deliveryPartnerId);
+        return result;
     }
-
     public Order getOrderById(String orderId) {
-        return orderRepository.getOrderById(orderId);
+        Order result = orderRepository.getOrderById(orderId);
+        return result;
     }
-
-
-    public DeliveryPartner getPartnerById(String partnerId) {
-        return orderRepository.getPartnerById(partnerId);
+    public DeliveryPartner getPartnerById(String deliveryPartnerId) {
+        DeliveryPartner result = orderRepository.getPartnerById(deliveryPartnerId);
+        return result;
     }
-
-    public Integer getOrderCountByPartnerId(String partnerId) {
-        return orderRepository.getOrderCountByPartnerId(partnerId);
+    public int getOrderCountByPartnerId(String deliveryPartnerId) {
+        int result = orderRepository.getOrderCountByPartnerId(deliveryPartnerId);
+        return result;
     }
-
-    public List<String> getOrdersByPartnerId(String partnerId) {
-        return orderRepository.getOrdersByPartnerId(partnerId);
+    public List<String> getOrdersByPartnerId(String deliveryPartnerId) {
+        List<String> result = orderRepository.getOrdersByPartnerId(deliveryPartnerId);
+        return result;
     }
 
     public List<String> getAllOrders() {
-        return orderRepository.getAllOrders();
+        List<String> result = orderRepository.getAllOrders();
+        return result;
     }
 
-    public Integer getCountOfUnassignedOrders() {
-        return orderRepository.getCountOfUnassignedOrders();
+    public int getCountOfUnassignedOrders() {
+        int countOfOrders = orderRepository.getCountOfUnassignedOrders();
+        return countOfOrders;
     }
 
-    public Integer getOrdersLeftAfterGivenTimeByPartnerId(String time, String partnerId) {
-        return orderRepository.getOrdersLeftAfterGivenTimeByPartnerId(time, partnerId);
+    public int getOrdersLeftAfterGivenTimeByPartnerId(String time, String deliveryPartnerId) {
+        int countOfOrders = orderRepository.getOrdersLeftAfterGivenTimeByPartnerId(time, deliveryPartnerId);
+        return countOfOrders;
     }
 
-    public String getLastDeliveryTimeByPartnerId(String partnerId) {
-        return orderRepository.getLastDeliveryTimeByPartnerId(partnerId);
+    public String getLastDeliveryTimeByPartnerId(String deliveryPartnerId) {
+        String time = orderRepository.getLastDeliveryTimeByPartnerId(deliveryPartnerId);
+        return time;
     }
 
-    public void deletePartnerById(String partnerId) {
-        orderRepository.deletePartnerById(partnerId);
+    public String deletePartnerById(String deliveryPartnerId) {
+        String result = orderRepository.deletePartnerById(deliveryPartnerId);
+        return result;
     }
 
-    public void deleteOrderById(String orderId) {
-        orderRepository.deleteOrderById(orderId);
+    public String deleteOrderById(String orderId) {
+        String result = orderRepository.deleteOrderById(orderId);
+        return result;
     }
-
-
 }
